@@ -1,0 +1,14 @@
+# Compiled Object files
+*.o
+*.out
+
+# macOS specific
+.DS_Store
+
+# Compiled Executable
+server
+
+# Optional: Ignore generated presentation files in root if you only want them in docs/
+sunum_rehberi.md
+sunum_rehberi.pdf
+test.cpp

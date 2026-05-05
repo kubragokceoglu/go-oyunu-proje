@@ -1,0 +1,310 @@
+:root {
+    --bg-color: #0f172a;
+    --glass-bg: rgba(30, 41, 59, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --board-bg: #dcb35c; /* Traditional wood color with modern twist */
+    --line-color: #451a03;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-color);
+    background-image: 
+        radial-gradient(circle at 0% 0%, hsla(253, 16%, 7%, 1) 0%, transparent 50%), 
+        radial-gradient(circle at 50% 0%, hsla(225, 39%, 30%, 1) 0%, transparent 50%), 
+        radial-gradient(circle at 100% 0%, hsla(339, 49%, 30%, 1) 0%, transparent 50%);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.glass-panel.active {
+    display: flex;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* LOGIN SCREEN */
+#login-container {
+    width: 350px;
+    text-align: center;
+}
+
+#login-container h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    background: linear-gradient(to right, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#login-container p {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+}
+
+.input-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+input {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s;
+}
+
+input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    font-family: inherit;
+}
+
+button:hover {
+    background: var(--primary-hover);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.error-text {
+    color: #ef4444 !important;
+    margin-top: 15px;
+    font-size: 0.85rem !important;
+    min-height: 20px;
+}
+
+/* GAME SCREEN */
+#game-container {
+    width: 600px;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h2 {
+    font-weight: 700;
+}
+
+.status-badge {
+    padding: 6px 12px;
+    background: rgba(234, 179, 8, 0.2);
+    color: #facc15;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-badge.ready {
+    background: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+}
+
+.info-panel {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(15, 23, 42, 0.4);
+    padding: 15px 20px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    border: 1px solid var(--glass-border);
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+}
+
+.stone-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    box-shadow: inset -2px -2px 4px rgba(0,0,0,0.5);
+}
+
+.stone-icon.black { background: #111; }
+.stone-icon.white { background: #eee; }
+
+.turn-indicator {
+    font-weight: 700;
+    color: var(--primary);
+    background: rgba(59, 130, 246, 0.1);
+    padding: 5px 15px;
+    border-radius: 12px;
+}
+
+#go-board {
+    display: grid;
+    background-color: var(--board-bg);
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5), 0 10px 30px rgba(0,0,0,0.5);
+    margin-bottom: 25px;
+    position: relative;
+    gap: 0;
+}
+
+.cell {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Lines */
+.cell::before, .cell::after {
+    content: '';
+    position: absolute;
+    background-color: var(--line-color);
+    z-index: 1;
+}
+
+/* Horizontal line */
+.cell::before {
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    transform: translateY(-50%);
+}
+
+/* Vertical line */
+.cell::after {
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    transform: translateX(-50%);
+}
+
+/* Edge corrections */
+.cell.top::after { top: 50%; }
+.cell.bottom::after { bottom: 50%; }
+.cell.left::before { left: 50%; }
+.cell.right::before { right: 50%; }
+
+/* The stone itself */
+.stone {
+    width: 85%;
+    height: 85%;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    box-shadow: inset -3px -3px 6px rgba(0,0,0,0.4), 2px 2px 5px rgba(0,0,0,0.3);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: scale(0);
+}
+
+.stone.show {
+    transform: scale(1);
+}
+
+.stone.black {
+    background: radial-gradient(circle at 30% 30%, #444, #111);
+}
+
+.stone.white {
+    background: radial-gradient(circle at 30% 30%, #fff, #ccc);
+}
+
+.cell:hover .stone.empty {
+    transform: scale(0.5);
+    opacity: 0.5;
+    background: var(--primary);
+    box-shadow: none;
+}
+
+.controls {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#pass-btn {
+    width: auto;
+    padding: 10px 25px;
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+#pass-btn:hover {
+    background: rgba(239, 68, 68, 0.4);
+}
+
+.message-text {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #facc15;
+    min-height: 20px;
+}
