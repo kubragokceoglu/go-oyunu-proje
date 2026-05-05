@@ -3,8 +3,8 @@
 ## 1. Projeyi Geliştirenler
 | Adı Soyadı | Öğrenci Numarası |
 | :--- | :--- |
-| [Öğrenci 1 Ad Soyad] | [Öğrenci 1 No] |
-| [Öğrenci 2 Ad Soyad] | [Öğrenci 2 No] |
+| Kübra Gökçeoğlu | 230206401 |
+| Şeyma Nur Temel | 230206062 |
 
 ## 2. Projenin Konusu
 Bu projede, C++ dili ve Soket Programlama (Socket Programming) kullanarak çok oyunculu ve çevrimiçi oynanabilen bir "Go" masa oyunu geliştirdik. Temel amacımız ağ üzerinden iki oyuncunun karşılıklı hamle yapabilmesini sağlamaktı.
