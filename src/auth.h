@@ -5,10 +5,10 @@
 
 class Auth {
 public:
-    // Registers a new user. Returns true if successful, false if user exists.
+    // Yeni bir kullanıcı kaydeder. Başarılıysa true, kullanıcı zaten varsa false döner.
     static bool registerUser(const std::string& username, const std::string& password);
 
-    // Authenticates a user. Returns true if valid, false otherwise.
+    // Bir kullanıcının girişini doğrular. Şifre doğruysa true, aksi halde false döner.
     static bool loginUser(const std::string& username, const std::string& password);
 
 private:

@@ -10,20 +10,20 @@ class GoLogic {
 public:
     GoLogic(int size = 9);
 
-    // Attempts to play a move. Returns true if successful, false if illegal.
+    // Hamle yapmayı dener. Başarılı olursa true, geçersiz bir hamleyse false döner.
     bool playMove(int row, int col, Stone player);
     
-    // Player passes their turn
+    // Oyuncunun pas geçmesini sağlar
     void passTurn();
 
-    // Get the stone at a given position
+    // Belirli bir konumdaki taşı getirir
     Stone getStone(int row, int col) const;
 
     int getSize() const { return size; }
     Stone getCurrentTurn() const { return currentTurn; }
     bool isGameOver() const { return consecutivePasses >= 2; }
 
-    // Helpers to convert enum to string/char for UI
+    // Arayüz için enum değerlerini string/char tipine dönüştüren yardımcı fonksiyonlar
     static char getStoneChar(Stone s);
     static std::string getStoneColor(Stone s);
 
@@ -34,16 +34,16 @@ private:
     Stone currentTurn;
     int consecutivePasses;
 
-    // Internal mechanics
+    // Oyun motoru iç işleyiş mekanizmaları
     bool isOutOfBounds(int r, int c) const;
     
-    // Removes captured stones and returns how many were removed
+    // Esir alınan taşları tahtadan kaldırır ve kaç taş kaldırıldığını döndürür
     int processCaptures(Stone opponent);
     
-    // Checks if a specific chain of stones has at least one liberty
+    // Belirli bir taş grubunun (zincirin) en az bir nefesi (boşluğu) olup olmadığını kontrol eder
     bool hasLiberty(int r, int c, Stone color, std::vector<std::vector<bool>>& visited) const;
     
-    // Removes a specific chain of stones from the board
+    // Belirli bir taş grubunu (zinciri) tahtadan siler
     void removeChain(int r, int c, Stone color);
     
 
